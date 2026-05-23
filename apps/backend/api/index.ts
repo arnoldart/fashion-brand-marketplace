@@ -65,5 +65,5 @@ export const bootstrap = async (): Promise<express.Express> => {
 // Handler utama yang diekspor untuk dipanggil oleh runtime Vercel serverless
 export default async (req: any, res: any) => {
   const server = await bootstrap();
-  return server(req, res);
+  return (server as any)(req, res);
 };
