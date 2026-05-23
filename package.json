@@ -11,6 +11,12 @@
     "test:e2e": "turbo test:e2e",
     "format": "prettier --write \"apps/**/*.{ts,tsx,js,jsx,json,md}\""
   },
+  "pnpm": {
+    "ignoredBuiltDependencies": [
+      "sharp",
+      "unrs-resolver"
+    ]
+  },
   "devDependencies": {
     "prettier": "^3.4.2",
     "turbo": "^2.9.14"
