@@ -22,10 +22,13 @@
     "test:e2e": "jest --config ./test/jest-e2e.json"
   },
   "dependencies": {
+    "@nest-lab/throttler-storage-redis": "^1.2.0",
     "@nestjs/common": "^11.0.1",
     "@nestjs/core": "^11.0.1",
     "@nestjs/platform-express": "^11.0.1",
     "@nestjs/swagger": "^11.4.4",
+    "@nestjs/throttler": "^6.5.0",
+    "ioredis": "^5.10.1",
     "nestjs-pino": "^4.6.1",
     "pino": "^10.3.1",
     "pino-http": "^11.0.0",
