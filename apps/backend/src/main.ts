@@ -1,9 +1,13 @@
 import { NestFactory } from '@nestjs/core';
 import { AppModule } from './app.module';
 import { DocumentBuilder, SwaggerModule } from '@nestjs/swagger';
+import { Logger } from 'nestjs-pino';
 
 async function bootstrap() {
-  const app = await NestFactory.create(AppModule);
+  const app = await NestFactory.create(AppModule, { bufferLogs: true });
+
+  const logger = app.get(Logger);
+  app.useLogger(logger);
 
   app.enableCors({
     origin: process.env.ALLOWED_ORIGINS
@@ -24,8 +28,8 @@ async function bootstrap() {
   const document = SwaggerModule.createDocument(app, config);
   SwaggerModule.setup('api', app, document);
 
-  console.log('Server is running on port ' + (process.env.PORT ?? 4000));
-  console.log('Swagger UI is available at /api');
+  logger.log('Server is running on port ' + (process.env.PORT ?? 4000));
+  logger.log('Swagger UI is available at /api');
   await app.listen(process.env.PORT ?? 4000);
 }
 bootstrap();
